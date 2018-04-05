@@ -3,10 +3,10 @@ from numpy import nan as NA
 import pandas as pd
 from pandas import Series, DataFrame, Index
 
-#填充0
-df = DataFrame(np.random.randn(7,3))
-df.ix[:4,1] = NA
-df.ix[:2,2] = NA
+# 填充0
+df = DataFrame(np.random.randn(7, 3))
+df.ix[:4, 1] = NA
+df.ix[:2, 2] = NA
 print(df.fillna(0))
 '''
           0         1         2
@@ -18,10 +18,10 @@ print(df.fillna(0))
 5 -1.460086 -0.297704  0.450831
 6  0.374312 -0.119064  0.473813
 '''
-df = DataFrame(np.random.randn(7,3))
-df.ix[:4,1] = NA
-df.ix[:2,2] = NA
-print(df.fillna(0,inplace = True)) #None  无返回值，直接改变df
+df = DataFrame(np.random.randn(7, 3))
+df.ix[:4, 1] = NA
+df.ix[:2, 2] = NA
+print(df.fillna(0, inplace=True))  # None  无返回值，直接改变df
 print(df)
 '''
           0         1         2
@@ -34,9 +34,9 @@ print(df)
 6  0.071537  0.803568 -0.922995
 '''
 # 不用行列填充不同的值
-df.ix[:4,1] = NA
-df.ix[:2,2] = NA
-print(df.fillna({1:0.5,2:-1}))#第3列不存在
+df.ix[:4, 1] = NA
+df.ix[:2, 2] = NA
+print(df.fillna({1: 0.5, 2: -1}))  # 第3列不存在
 '''
           0         1         2
 0  1.548890  0.500000 -1.000000
@@ -49,10 +49,10 @@ print(df.fillna({1:0.5,2:-1}))#第3列不存在
 '''
 print('')
 
-#不同的填充方式
-df = DataFrame(np.random.randn(6,3))
-df.ix[2:,1] = NA
-df.ix[4:,2] = NA
+# 不同的填充方式
+df = DataFrame(np.random.randn(6, 3))
+df.ix[2:, 1] = NA
+df.ix[4:, 2] = NA
 print(df)
 '''
           0         1         2
@@ -63,7 +63,7 @@ print(df)
 4 -0.263781       NaN       NaN
 5  0.903039       NaN       NaN
 '''
-print(df.fillna(method = 'ffill'))
+print(df.fillna(method='ffill'))
 '''
           0         1         2
 0 -0.538438  0.383027  0.843894
@@ -73,7 +73,7 @@ print(df.fillna(method = 'ffill'))
 4 -0.263781  0.498426  0.424176
 5  0.903039  0.498426  0.424176
 '''
-print(df.fillna(method = 'ffill', limit = 2))
+print(df.fillna(method='ffill', limit=2))
 '''
           0         1         2
 0 -0.538438  0.383027  0.843894
@@ -85,8 +85,8 @@ print(df.fillna(method = 'ffill', limit = 2))
 '''
 print('')
 
-#用统计数据填充
-data = Series([1.,NA,3.5,NA,7])
+# 用统计数据填充
+data = Series([1., NA, 3.5, NA, 7])
 print(data.fillna(data.mean()))
 '''
 0    1.000000
